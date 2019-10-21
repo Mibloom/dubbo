@@ -240,36 +240,37 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>${maven_checkstyle_version}</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.puppycrawl.tools</groupId>
-                                <artifactId>checkstyle</artifactId>
-                                <version>8.9</version>
-                            </dependency>
-                        </dependencies>
-                        <executions>
-                            <execution>
-                                <id>checkstyle-validation</id>
-                                <phase>validate</phase>
-                                <configuration>
-                                    <configLocation>codestyle/checkstyle.xml</configLocation>
-                                    <suppressionsLocation>codestyle/checkstyle-suppressions.xml</suppressionsLocation>
-                                    <linkXRef>false</linkXRef>
-                                    <encoding>UTF-8</encoding>
-                                    <consoleOutput>true</consoleOutput>
-                                    <failOnViolation>true</failOnViolation>
-                                    <excludes>**/JSONWriter.java</excludes>
-                                </configuration>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+                    <!-- 注掉代码质量检查工具-->
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--                        <version>${maven_checkstyle_version}</version>-->
+<!--                        <dependencies>-->
+<!--                            <dependency>-->
+<!--                                <groupId>com.puppycrawl.tools</groupId>-->
+<!--                                <artifactId>checkstyle</artifactId>-->
+<!--                                <version>8.9</version>-->
+<!--                            </dependency>-->
+<!--                        </dependencies>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <id>checkstyle-validation</id>-->
+<!--                                <phase>validate</phase>-->
+<!--                                <configuration>-->
+<!--                                    <configLocation>codestyle/checkstyle.xml</configLocation>-->
+<!--                                    <suppressionsLocation>codestyle/checkstyle-suppressions.xml</suppressionsLocation>-->
+<!--                                    <linkXRef>false</linkXRef>-->
+<!--                                    <encoding>UTF-8</encoding>-->
+<!--                                    <consoleOutput>true</consoleOutput>-->
+<!--                                    <failOnViolation>true</failOnViolation>-->
+<!--                                    <excludes>**/JSONWriter.java</excludes>-->
+<!--                                </configuration>-->
+<!--                                <goals>-->
+<!--                                    <goal>check</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
                 </plugins>
             </build>
         </profile>
@@ -366,77 +367,78 @@
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven_surefire_version}</version>
-                <configuration>
-                    <useSystemClassLoader>true</useSystemClassLoader>
-                    <forkMode>once</forkMode>
-                    <argLine>${argline} ${jacocoArgLine}</argLine>
-                    <systemProperties>
-                        <!-- common shared -->
-                        <property>
-                            <name>transporter</name>
-                            <value>${transporter}</value>
-                        </property>
-                        <property>
-                            <name>serialization</name>
-                            <value>${serialization}</value>
-                        </property>
-                        <!-- server side -->
-                        <property>
-                            <name>port</name>
-                            <value>${port}</value>
-                        </property>
-                        <property>
-                            <name>threadpool</name>
-                            <value>${threadpool}</value>
-                        </property>
-                        <property>
-                            <name>threads</name>
-                            <value>${threads}</value>
-                        </property>
-                        <property>
-                            <name>iothreads</name>
-                            <value>${iothreads}</value>
-                        </property>
-                        <!-- client side -->
-                        <property>
-                            <name>server</name>
-                            <value>${server}</value>
-                        </property>
-                        <property>
-                            <name>timeout</name>
-                            <value>${timeout}</value>
-                        </property>
-                        <property>
-                            <name>length</name>
-                            <value>${length}</value>
-                        </property>
-                        <property>
-                            <name>connections</name>
-                            <value>${connections}</value>
-                        </property>
-                        <property>
-                            <name>base</name>
-                            <value>${base}</value>
-                        </property>
-                        <property>
-                            <name>concurrent</name>
-                            <value>${concurrent}</value>
-                        </property>
-                        <property>
-                            <name>runs</name>
-                            <value>${runs}</value>
-                        </property>
-                        <property>
-                            <name>onerror</name>
-                            <value>${onerror}</value>
-                        </property>
-                    </systemProperties>
-                </configuration>
-            </plugin>
+            <!--暂不需要-->
+            <!--<plugin>-->
+            <!--    <groupId>org.apache.maven.plugins</groupId>-->
+            <!--    <artifactId>maven-surefire-plugin</artifactId>-->
+            <!--    <version>${maven_surefire_version}</version>-->
+            <!--    <configuration>-->
+            <!--        <useSystemClassLoader>true</useSystemClassLoader>-->
+            <!--        <forkMode>once</forkMode>-->
+            <!--        <argLine>${argline} ${jacocoArgLine}</argLine>-->
+            <!--        <systemProperties>-->
+            <!--            &lt;!&ndash; common shared &ndash;&gt;-->
+            <!--            <property>-->
+            <!--                <name>transporter</name>-->
+            <!--                <value>${transporter}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>serialization</name>-->
+            <!--                <value>${serialization}</value>-->
+            <!--            </property>-->
+            <!--            &lt;!&ndash; server side &ndash;&gt;-->
+            <!--            <property>-->
+            <!--                <name>port</name>-->
+            <!--                <value>${port}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>threadpool</name>-->
+            <!--                <value>${threadpool}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>threads</name>-->
+            <!--                <value>${threads}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>iothreads</name>-->
+            <!--                <value>${iothreads}</value>-->
+            <!--            </property>-->
+            <!--            &lt;!&ndash; client side &ndash;&gt;-->
+            <!--            <property>-->
+            <!--                <name>server</name>-->
+            <!--                <value>${server}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>timeout</name>-->
+            <!--                <value>${timeout}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>length</name>-->
+            <!--                <value>${length}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>connections</name>-->
+            <!--                <value>${connections}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>base</name>-->
+            <!--                <value>${base}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>concurrent</name>-->
+            <!--                <value>${concurrent}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>runs</name>-->
+            <!--                <value>${runs}</value>-->
+            <!--            </property>-->
+            <!--            <property>-->
+            <!--                <name>onerror</name>-->
+            <!--                <value>${onerror}</value>-->
+            <!--            </property>-->
+            <!--        </systemProperties>-->
+            <!--    </configuration>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
