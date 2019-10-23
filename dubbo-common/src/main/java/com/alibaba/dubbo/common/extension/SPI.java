@@ -51,14 +51,22 @@ import java.lang.annotation.Target;
  * instead of reporting which extract extension implementation fails and the extract reason.
  * </p>
  */
+
+/**
+ * NOTE-LPK: 2019/10/21 16:52  SPI是一种服务发现机制，作用是用来解耦。
+  * 详细信息：http://dubbo.apache.org/zh-cn/docs/source_code_guide/dubbo-spi.html
+  * SPI 就是可以通过配置文件动态的选择接口的实现
+  * 接口使用了@SPI 后就表明该接口可扩展, 其实现类可通过配置文件选择
+ */
+
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface SPI {
 
-    /**
-     * default extension name
-     */
-    String value() default "";
+		/**
+		 * default extension name
+		 */
+		String value() default "";
 
 }

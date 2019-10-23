@@ -41,6 +41,9 @@ public class AdaptiveExtensionFactory implements ExtensionFactory {
         factories = Collections.unmodifiableList(list);
     }
 
+    /**
+    * NOTE-LPK 2019/10/21 19:09 @Adaptive在类上，type一般是由我们自己写的的实现类，而不是框架自己生成的
+    */
     @Override
     public <T> T getExtension(Class<T> type, String name) {
         for (ExtensionFactory factory : factories) {
